@@ -508,14 +508,9 @@ const Controller = {
             // Show modal
             View.showModal('receiptModal');
             
-            // Print after short delay
+            // Auto-print after short delay to allow modal to render
             setTimeout(() => {
-                try {
-                    window.print();
-                } catch (printError) {
-                    console.error('Print error:', printError);
-                    View.showAlert('Print function not available', 'error');
-                }
+                this.printReceipt();
             }, 500);
 
             // Clear cart, payment and refresh
@@ -528,6 +523,24 @@ const Controller = {
         } catch (error) {
             console.error('Error in printBill:', error);
             View.showAlert('Error processing order: ' + error.message, 'error');
+        }
+    },
+
+    // Print receipt (can be called from Print button or auto-print)
+    printReceipt() {
+        try {
+            // Check if browser supports printing
+            if (!window.print) {
+                View.showAlert('Printing is not supported in this browser', 'error');
+                return;
+            }
+
+            // Trigger print dialog - this will use connected printer
+            window.print();
+            
+        } catch (printError) {
+            console.error('Print error:', printError);
+            View.showAlert('Unable to print. Please check if a printer is connected.', 'error');
         }
     },
 

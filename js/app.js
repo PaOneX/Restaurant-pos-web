@@ -17,7 +17,7 @@ function initModals() {
                 <!-- Receipt will be generated here -->
             </div>
             <div class="modal-actions">
-                <button class="btn btn-print" onclick="window.print()">
+                <button class="btn btn-print" onclick="Controller.printReceipt()">
                     <i class="fas fa-print"></i> Print
                 </button>
                 <button class="btn btn-secondary" onclick="Controller.closeReceipt()">
