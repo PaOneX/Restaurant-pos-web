@@ -1440,21 +1440,39 @@ table tbody tr:hover {
     .table-responsive {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        border-radius: 8px;
     }
 
     table {
-        min-width: 600px;
+        min-width: 800px;
+        font-size: 0.9rem;
     }
 
     table th,
     table td {
         padding: 0.75rem 0.5rem;
         font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    /* Make action buttons stack vertically on tablets */
+    table td:last-child {
+        white-space: normal;
+    }
+
+    table td:last-child .btn-sm {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+
+    table td:last-child .btn-sm:last-child {
+        margin-bottom: 0;
     }
 
     .btn-sm {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.75rem;
+        padding: 0.4rem 0.7rem;
+        font-size: 0.8rem;
     }
 
     .modal-content {
@@ -1954,22 +1972,69 @@ table tbody tr:hover {
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        border-radius: 8px;
+        margin-bottom: 1rem;
     }
 
+    /* Mobile-friendly table with cards */
     table {
-        font-size: 0.85rem;
-        min-width: 600px;
+        font-size: 0.8rem;
+        display: block;
+        width: 100%;
     }
 
-    table th,
+    table thead {
+        display: none;
+    }
+
+    table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 1rem;
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+    }
+
     table td {
-        padding: 0.7rem 0.5rem;
-        white-space: nowrap;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+        white-space: normal;
+        text-align: right;
+    }
+
+    table td:last-child {
+        border-bottom: none;
+        padding-top: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--dark-color);
+        text-align: left;
+        flex: 1;
+    }
+
+    table td:last-child .btn-sm {
+        width: 100%;
+        margin: 0;
     }
 
     .btn-sm {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.75rem;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
     }
 
     .modal {
@@ -2040,12 +2105,32 @@ table tbody tr:hover {
 
 /* Extra Small Devices (360px and below) */
 @media (max-width: 360px) {
+    html {
+        font-size: 13px;
+    }
+
     .header h1 {
         font-size: 0.9rem;
     }
 
+    .nav-link {
+        padding: 0.8rem 0.3rem;
+    }
+
+    .nav-link span {
+        font-size: 0.6rem;
+    }
+
     .products-grid {
         grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        padding: 0.8rem;
+    }
+
+    .card {
+        padding: 0.8rem;
     }
 
     .cart-totals .total-row {
@@ -2062,6 +2147,31 @@ table tbody tr:hover {
 
     .balance-value {
         font-size: 1.2rem;
+    }
+
+    table td {
+        padding: 0.4rem 0;
+        font-size: 0.75rem;
+    }
+
+    .btn-sm {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    .modal-content {
+        width: 98%;
+        padding: 1rem;
+    }
+
+    .category-btn {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .table-header {
+        flex-direction: column;
+        gap: 0.8rem;
     }
 }
 

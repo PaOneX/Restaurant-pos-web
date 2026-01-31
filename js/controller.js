@@ -20,9 +20,10 @@ const Controller = {
         Model.loadCurrentUser();
         // Check for daily reset
         const report = Model.checkDailyReset();
-        if (report && report.orderCount > 0) {
-            this.sendDailyReportToWhatsApp(report);
-        }
+        // WHATSAPP FEATURE DISABLED
+        // if (report && report.orderCount > 0) {
+        //     this.sendDailyReportToWhatsApp(report);
+        // }
         // Update user display and navigation
         View.updateUserDisplay(Model.currentUser);
 
@@ -567,15 +568,19 @@ const Controller = {
         }
     },
 
-    // Send current order history report to WhatsApp
+    // WHATSAPP FEATURE DISABLED - Send current order history report to WhatsApp
     sendOrderHistoryReport() {
-        const settings = Model.getSettings();
-        const adminPhone = 94716280311; //settings.adminPhone;
+        View.showAlert('WhatsApp reporting feature is currently disabled', 'info');
+        return;
         
-        // if (!adminPhone) {
-        //     View.showAlert('Please set Admin WhatsApp number in Settings first!', 'error');
-        //     return;
-        // }
+        /* COMMENTED OUT - WHATSAPP FUNCTIONALITY
+        const settings = Model.getSettings();
+        const adminPhone = settings.adminPhone;
+        
+        if (!adminPhone) {
+            View.showAlert('Please set Admin WhatsApp number in Settings first!', 'error');
+            return;
+        }
         
         const report = Model.calculateDailyTotal();
         
@@ -628,6 +633,7 @@ const Controller = {
         window.open(whatsappUrl, '_blank');
         
         View.showAlert('Opening WhatsApp...', 'success');
+        */
     },
 
     // ========================================
@@ -824,15 +830,19 @@ const Controller = {
         }
     },
 
-    // Send daily report to WhatsApp
+    // WHATSAPP FEATURE DISABLED - Send daily report to WhatsApp
     sendDailyReportToWhatsApp(report) {
-        const settings = Model.getSettings();
-        const adminPhone = 94716280311; //settings.adminPhone;
+        console.log('WhatsApp daily report feature is disabled');
+        return;
         
-        // if (!adminPhone) {
-        //     console.log('Admin phone number not set, skipping WhatsApp report');
-        //     return;
-        // }
+        /* COMMENTED OUT - WHATSAPP FUNCTIONALITY
+        const settings = Model.getSettings();
+        const adminPhone = settings.adminPhone;
+        
+        if (!adminPhone) {
+            console.log('Admin phone number not set, skipping WhatsApp report');
+            return;
+        }
         
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
@@ -877,6 +887,7 @@ const Controller = {
         window.open(whatsappUrl, '_blank');
         
         console.log('Daily report sent to WhatsApp:', adminPhone);
+        */
     },
 
     // ========================================

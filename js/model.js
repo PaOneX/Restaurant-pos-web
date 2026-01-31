@@ -12,7 +12,7 @@ const Model = {
     serviceChargeRate: 0,
     discount: 0,
     currency: "Rs.",
-    adminPhone: "94716280311",
+    adminPhone: "",
     lastResetDate: null,
   },
   currentUser: null,

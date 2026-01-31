@@ -20,13 +20,13 @@ const View = {
 
         tbody.innerHTML = products.map(product => `
             <tr>
-                <td>${Security.escapeHTML(product.id)}</td>
-                <td>${Security.escapeHTML(product.name)}</td>
-                <td>${Security.escapeHTML(product.mainCategory || product.category || 'N/A')}</td>
-                <td>${Security.escapeHTML(product.subCategory || 'N/A')}</td>
-                <td>${Model.formatCurrency(product.price)}</td>
-                <td>${product.stock}</td>
-                <td>
+                <td data-label="ID">${Security.escapeHTML(product.id)}</td>
+                <td data-label="Name">${Security.escapeHTML(product.name)}</td>
+                <td data-label="Main Category">${Security.escapeHTML(product.mainCategory || product.category || 'N/A')}</td>
+                <td data-label="Sub Category">${Security.escapeHTML(product.subCategory || 'N/A')}</td>
+                <td data-label="Price">${Model.formatCurrency(product.price)}</td>
+                <td data-label="Stock">${product.stock}</td>
+                <td data-label="Actions">
                     <button class="btn btn-sm btn-edit" onclick="Controller.editProduct('${Security.escapeHTML(product.id)}')">
                         <i class="fas fa-edit"></i> Edit
                     </button>
@@ -396,12 +396,12 @@ const View = {
 
         tbody.innerHTML = sortedOrders.map(order => `
             <tr>
-                <td>${order.id}</td>
-                <td>${order.date.full}</td>
-                <td>${order.items.length}</td>
-                <td>${Model.formatCurrency(order.totals.total)}</td>
-                <td>${order.user}</td>
-                <td>
+                <td data-label="Order ID">${order.id}</td>
+                <td data-label="Date & Time">${order.date.full}</td>
+                <td data-label="Items">${order.items.length}</td>
+                <td data-label="Total">${Model.formatCurrency(order.totals.total)}</td>
+                <td data-label="Cashier">${order.user}</td>
+                <td data-label="Actions">
                     <button class="btn btn-sm btn-view" onclick="Controller.viewOrder('${order.id}')">
                         <i class="fas fa-eye"></i> View
                     </button>
